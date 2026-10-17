@@ -8,10 +8,6 @@ import { Button } from '@/components/ui/button';
 
 const LONGUEUR_MAX = 1000;
 
-/**
- * NF6 : deux champs seulement (note et commentaire), moins de 2 minutes.
- * Règle 3 : le commentaire porte sur le cours et la pédagogie.
- */
 export default function FormulaireAvis({
     coursId,
     avisExistant,

@@ -15,9 +15,6 @@ use Inertia\Response;
 
 class StatistiqueController extends Controller
 {
-    /**
-     * F18 : tableau de bord des statistiques par cours.
-     */
     public function index(): Response
     {
         $cours = Cours::query()

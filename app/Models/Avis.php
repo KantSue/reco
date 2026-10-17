@@ -17,9 +17,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Avis anonyme d'un étudiant sur un cours.
- * L'auteur est conservé pour appliquer les règles de gestion mais n'est jamais exposé.
- *
  * @property int $id
  * @property int $cours_id
  * @property int $auteur_id
@@ -43,24 +40,15 @@ class Avis extends Model
 
     public const UPDATED_AT = 'date_modif';
 
-    /**
-     * Règle 5 : nombre de signalements qui masque automatiquement l'avis.
-     */
     public const SEUIL_SIGNALEMENTS = 3;
 
-    /**
-     * @var array<string, mixed>
-     */
+    /** @var array<string, mixed> */
     protected $attributes = [
         'statut' => 'publie',
         'nb_signalements' => 0,
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -72,41 +60,31 @@ class Avis extends Model
         ];
     }
 
-    /**
-     * @param  Builder<Avis>  $query
-     */
+    /** @param  Builder<Avis>  $query */
     public function scopePublies(Builder $query): void
     {
         $query->where('statut', StatutAvis::Publie);
     }
 
-    /**
-     * @return BelongsTo<Cours, $this>
-     */
+    /** @return BelongsTo<Cours, $this> */
     public function cours(): BelongsTo
     {
         return $this->belongsTo(Cours::class, 'cours_id');
     }
 
-    /**
-     * @return BelongsTo<PeriodeEvaluation, $this>
-     */
+    /** @return BelongsTo<PeriodeEvaluation, $this> */
     public function periode(): BelongsTo
     {
         return $this->belongsTo(PeriodeEvaluation::class, 'periode_id');
     }
 
-    /**
-     * @return HasOne<Reponse, $this>
-     */
+    /** @return HasOne<Reponse, $this> */
     public function reponse(): HasOne
     {
         return $this->hasOne(Reponse::class, 'avis_id');
     }
 
-    /**
-     * @return HasMany<Signalement, $this>
-     */
+    /** @return HasMany<Signalement, $this> */
     public function signalements(): HasMany
     {
         return $this->hasMany(Signalement::class, 'avis_id');
@@ -117,9 +95,6 @@ class Avis extends Model
         return $this->auteur_id === $user->id;
     }
 
-    /**
-     * Enregistre un signalement ; au 3e, l'avis passe au statut « signalé » (invisible).
-     */
     public function signaler(User $user, ?string $motif): void
     {
         DB::transaction(function () use ($user, $motif): void {
@@ -138,9 +113,6 @@ class Avis extends Model
         });
     }
 
-    /**
-     * Décision de l'administration : republier (compteur remis à zéro) ou masquer.
-     */
     public function moderer(StatutAvis $statut): void
     {
         $this->statut = $statut;

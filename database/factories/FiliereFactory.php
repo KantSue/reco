@@ -5,16 +5,10 @@ namespace Database\Factories;
 use App\Models\Filiere;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Filiere>
- */
+/** @extends Factory<Filiere> */
 class FiliereFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [

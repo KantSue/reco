@@ -14,9 +14,6 @@ use Inertia\Response;
 
 class EnseignantController extends Controller
 {
-    /**
-     * Liste des enseignants avec leurs cours et le nombre de recommandations.
-     */
     public function index(Request $request): Response
     {
         $recherche = $request->string('q')->trim()->toString();
@@ -44,9 +41,6 @@ class EnseignantController extends Controller
         ]);
     }
 
-    /**
-     * Fiche enseignant : cours assurés et recommandations anonymes (F13).
-     */
     public function show(Request $request, User $enseignant): Response
     {
         abort_unless($enseignant->role === Role::Enseignant, 404);

@@ -16,9 +16,6 @@ use Inertia\Response;
 
 class MesCoursController extends Controller
 {
-    /**
-     * Espace enseignant : fiches à tenir à jour (F7) et avis reçus (F11).
-     */
     public function index(Request $request): Response
     {
         $enseignant = $request->user();
@@ -54,9 +51,6 @@ class MesCoursController extends Controller
         ]);
     }
 
-    /**
-     * S3 : l'enseignant enregistre la fiche ; la date de mise à jour est renouvelée.
-     */
     public function update(FicheCoursRequest $request, Cours $cours): RedirectResponse
     {
         $cours->fill($request->validated());

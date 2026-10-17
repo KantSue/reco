@@ -15,17 +15,8 @@ use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+    public function register(): void {}
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
         $this->configureAuthentication();
@@ -33,9 +24,6 @@ class FortifyServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
     }
 
-    /**
-     * Connexion par numéro d'étudiant ou identifiant ; les comptes désactivés sont refusés.
-     */
     private function configureAuthentication(): void
     {
         Fortify::authenticateUsing(function (Request $request): ?User {
@@ -55,9 +43,6 @@ class FortifyServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Configure Fortify views.
-     */
     private function configureViews(): void
     {
         Fortify::loginView(fn (Request $request) => Inertia::render('auth/login', [
@@ -66,11 +51,7 @@ class FortifyServiceProvider extends ServiceProvider
         ]));
     }
 
-    /**
-     * Comptes créés par DonneesDemonstrationSeeder, affichés uniquement en local.
-     *
-     * @return list<array{role: string, identifiant: string, motDePasse: string}>
-     */
+    /** @return list<array{role: string, identifiant: string, motDePasse: string}> */
     private function comptesDemo(): array
     {
         return array_map(fn (array $compte): array => [
@@ -85,9 +66,6 @@ class FortifyServiceProvider extends ServiceProvider
         ]);
     }
 
-    /**
-     * Configure rate limiting.
-     */
     private function configureRateLimiting(): void
     {
         RateLimiter::for('login', function (Request $request) {

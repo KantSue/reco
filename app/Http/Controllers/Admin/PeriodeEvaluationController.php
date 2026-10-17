@@ -11,9 +11,6 @@ use Inertia\Response;
 
 class PeriodeEvaluationController extends Controller
 {
-    /**
-     * F14 : périodes d'évaluation à mi-semestre et en fin de semestre.
-     */
     public function index(): Response
     {
         $periodes = PeriodeEvaluation::query()->withCount('avis')->orderByDesc('date_debut')->get();

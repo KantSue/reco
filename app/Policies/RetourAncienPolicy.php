@@ -8,9 +8,6 @@ use App\Models\User;
 
 class RetourAncienPolicy
 {
-    /**
-     * F15 et règle 9 : seuls les anciens étudiants publient des retours d'expérience.
-     */
     public function create(User $user): bool
     {
         return $user->role === Role::Ancien;

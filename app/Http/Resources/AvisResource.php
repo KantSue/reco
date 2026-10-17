@@ -7,19 +7,10 @@ use App\Models\Avis;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * Représentation publique d'un avis.
- * NF1 : l'auteur n'est jamais transmis au navigateur, ni à l'administration.
- *
- * @mixin Avis
- */
+/** @mixin Avis */
 class AvisResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function toArray(Request $request): array
     {
         $estAdmin = $request->user()?->role === Role::Admin;

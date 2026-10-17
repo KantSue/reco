@@ -19,7 +19,6 @@ const MOTIFS = [
     'Contenu contesté',
 ];
 
-/** F10 : signaler un avis inapproprié (masqué automatiquement au 3e signalement). */
 export default function SignalerAvis({
     avisId,
     dejaSignale,

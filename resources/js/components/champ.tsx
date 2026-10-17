@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import InputError from '@/components/input-error';
 import { cn } from '@/lib/utils';
 
-/** Libellé + champ + message d'erreur, au style RECO. */
 export default function Champ({
     label,
     htmlFor,

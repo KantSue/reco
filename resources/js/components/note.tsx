@@ -1,7 +1,6 @@
 import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-/** Pastille « 4 / 5 » d'un avis. */
 export function NotePastille({
     note,
     className,
@@ -21,7 +20,6 @@ export function NotePastille({
     );
 }
 
-/** Cinq étoiles remplies selon une note sur 5 (arrondie à la demi-étoile). */
 export function Etoiles({
     note,
     taille = 15,

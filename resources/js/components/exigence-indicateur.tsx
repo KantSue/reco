@@ -1,7 +1,6 @@
 import type { Exigence } from '@/types';
 import { cn } from '@/lib/utils';
 
-/** Barres de niveau d'exigence (3 niveaux : faible, moyenne, élevée). */
 export default function ExigenceIndicateur({
     exigence,
     className,

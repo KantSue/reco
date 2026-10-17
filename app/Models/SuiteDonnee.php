@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
- * Retour « suite donnée » publié par l'administration sur la fiche d'un cours.
- *
  * @property int $id
  * @property int $cours_id
  * @property int $admin_id
@@ -30,11 +28,7 @@ class SuiteDonnee extends Model
 
     public const UPDATED_AT = null;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -42,9 +36,7 @@ class SuiteDonnee extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<Cours, $this>
-     */
+    /** @return BelongsTo<Cours, $this> */
     public function cours(): BelongsTo
     {
         return $this->belongsTo(Cours::class, 'cours_id');

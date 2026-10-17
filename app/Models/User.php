@@ -17,8 +17,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 
 /**
- * Compte de la plateforme (table « utilisateur ») : étudiant, ancien, enseignant ou administration.
- *
  * @property int $id
  * @property string $identifiant
  * @property string $mot_de_passe_hash
@@ -44,18 +42,10 @@ class User extends Authenticatable
 
     public const UPDATED_AT = null;
 
-    /**
-     * Colonne contenant le mot de passe haché (bcrypt).
-     *
-     * @var string
-     */
+    /** @var string */
     protected $authPasswordName = 'mot_de_passe_hash';
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -67,11 +57,7 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Prénom suivi du nom.
-     *
-     * @return Attribute<string, never>
-     */
+    /** @return Attribute<string, never> */
     protected function nomComplet(): Attribute
     {
         return Attribute::get(fn (): string => trim("{$this->prenom} {$this->nom}"));
@@ -82,29 +68,19 @@ class User extends Authenticatable
         return in_array($this->role, $roles, true);
     }
 
-    /**
-     * @param  Builder<User>  $query
-     */
+    /** @param  Builder<User>  $query */
     public function scopeEnseignants(Builder $query): void
     {
         $query->where('role', Role::Enseignant);
     }
 
-    /**
-     * Cours assurés par l'enseignant.
-     *
-     * @return HasMany<Cours, $this>
-     */
+    /** @return HasMany<Cours, $this> */
     public function coursAssures(): HasMany
     {
         return $this->hasMany(Cours::class, 'enseignant_id');
     }
 
-    /**
-     * Cours suivis par l'étudiant (table inscription_cours).
-     *
-     * @return BelongsToMany<Cours, $this, InscriptionCours>
-     */
+    /** @return BelongsToMany<Cours, $this, InscriptionCours> */
     public function coursSuivis(): BelongsToMany
     {
         return $this->belongsToMany(Cours::class, 'inscription_cours', 'etudiant_id', 'cours_id')
@@ -112,9 +88,7 @@ class User extends Authenticatable
             ->withPivot('annee_universitaire');
     }
 
-    /**
-     * @return HasMany<Recommandation, $this>
-     */
+    /** @return HasMany<Recommandation, $this> */
     public function recommandationsRecues(): HasMany
     {
         return $this->hasMany(Recommandation::class, 'enseignant_id');

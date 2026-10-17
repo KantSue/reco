@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', AccueilController::class)->name('home');
 
-// F17 : fiches officielles consultables sans compte (les avis restent réservés aux membres).
 Route::get('cours', [CoursController::class, 'index'])->name('cours.index');
 Route::get('cours/{cours}', [CoursController::class, 'show'])->name('cours.show');
 

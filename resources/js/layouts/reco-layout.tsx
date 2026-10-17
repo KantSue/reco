@@ -25,7 +25,6 @@ import type { Role } from '@/types';
 
 type LienNavigation = Omit<LienCoquille, 'actif'> & { exact?: boolean };
 
-/** NF2 : chaque rôle ne voit que les pages qui le concernent. */
 function liensPourRole(role: Role | null): LienNavigation[] {
     const lienCours = { titre: 'Cours', url: cours().url, icone: BookOpen };
     const lienEnseignants = {

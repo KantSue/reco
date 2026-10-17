@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
- * Droit de réponse de l'enseignant à un avis (une seule réponse par avis).
- *
  * @property int $id
  * @property int $avis_id
  * @property int $enseignant_id
@@ -30,11 +28,7 @@ class Reponse extends Model
 
     public const UPDATED_AT = null;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -42,17 +36,13 @@ class Reponse extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<Avis, $this>
-     */
+    /** @return BelongsTo<Avis, $this> */
     public function avis(): BelongsTo
     {
         return $this->belongsTo(Avis::class, 'avis_id');
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
+    /** @return BelongsTo<User, $this> */
     public function enseignant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'enseignant_id');

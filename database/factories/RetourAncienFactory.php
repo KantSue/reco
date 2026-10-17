@@ -7,16 +7,10 @@ use App\Models\RetourAncien;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<RetourAncien>
- */
+/** @extends Factory<RetourAncien> */
 class RetourAncienFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [

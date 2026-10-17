@@ -25,11 +25,7 @@ class Signalement extends Model
 
     public const UPDATED_AT = null;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -37,9 +33,7 @@ class Signalement extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<Avis, $this>
-     */
+    /** @return BelongsTo<Avis, $this> */
     public function avis(): BelongsTo
     {
         return $this->belongsTo(Avis::class, 'avis_id');

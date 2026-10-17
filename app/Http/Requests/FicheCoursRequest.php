@@ -7,9 +7,6 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-/**
- * Contenu pédagogique d'une fiche, modifiable par l'enseignant du cours (F7).
- */
 class FicheCoursRequest extends FormRequest
 {
     public function authorize(): bool
@@ -17,11 +14,7 @@ class FicheCoursRequest extends FormRequest
         return $this->user()?->can('update', $this->route('cours')) ?? false;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
+    /** @return array<string, ValidationRule|array<mixed>|string> */
     public function rules(): array
     {
         return [

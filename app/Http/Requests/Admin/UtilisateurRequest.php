@@ -9,16 +9,9 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-/**
- * Création et modification d'un compte par l'administration (F8).
- */
 class UtilisateurRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
-     */
+    /** @return array<string, ValidationRule|array<mixed>|string> */
     public function rules(): array
     {
         /** @var User|null $utilisateur */
@@ -36,11 +29,7 @@ class UtilisateurRequest extends FormRequest
         ];
     }
 
-    /**
-     * Données prêtes à enregistrer (le mot de passe est haché par le cast du modèle).
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function donneesCompte(): array
     {
         $donnees = $this->safe()->except('mot_de_passe');

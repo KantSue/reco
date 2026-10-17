@@ -6,16 +6,9 @@ use App\Models\Cours;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * Fiche officielle d'un cours.
- *
- * @mixin Cours
- */
+/** @mixin Cours */
 class CoursResource extends JsonResource
 {
-    /**
-     * Inclure les statistiques d'avis (note moyenne, nombre d'avis).
-     */
     private bool $avecNotes = false;
 
     public function avecNotes(bool $avecNotes = true): static
@@ -25,11 +18,7 @@ class CoursResource extends JsonResource
         return $this;
     }
 
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function toArray(Request $request): array
     {
         return [

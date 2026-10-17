@@ -23,34 +23,22 @@ class Filiere extends Model
     /** @use HasFactory<FiliereFactory> */
     use HasFactory;
 
-    /**
-     * Niveaux d'études proposés par l'université.
-     *
-     * @var list<string>
-     */
+    /** @var list<string> */
     public const NIVEAUX = ['L1', 'L2', 'L3', 'M1', 'M2'];
 
-    /**
-     * @return HasMany<Cours, $this>
-     */
+    /** @return HasMany<Cours, $this> */
     public function cours(): HasMany
     {
         return $this->hasMany(Cours::class, 'filiere_id');
     }
 
-    /**
-     * @return HasMany<RetourAncien, $this>
-     */
+    /** @return HasMany<RetourAncien, $this> */
     public function retoursAnciens(): HasMany
     {
         return $this->hasMany(RetourAncien::class, 'filiere_id');
     }
 
-    /**
-     * Nom et niveau, par exemple « Informatique · L2 ».
-     *
-     * @return Attribute<string, never>
-     */
+    /** @return Attribute<string, never> */
     protected function libelle(): Attribute
     {
         return Attribute::get(fn (): string => "{$this->nom} · {$this->niveau}");

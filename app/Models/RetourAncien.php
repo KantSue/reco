@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
- * Retour d'expérience publié par un ancien étudiant sur une filière.
- *
  * @property int $id
  * @property int $auteur_id
  * @property int $filiere_id
@@ -30,11 +28,7 @@ class RetourAncien extends Model
 
     public const UPDATED_AT = null;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -42,17 +36,13 @@ class RetourAncien extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
+    /** @return BelongsTo<User, $this> */
     public function auteur(): BelongsTo
     {
         return $this->belongsTo(User::class, 'auteur_id');
     }
 
-    /**
-     * @return BelongsTo<Filiere, $this>
-     */
+    /** @return BelongsTo<Filiere, $this> */
     public function filiere(): BelongsTo
     {
         return $this->belongsTo(Filiere::class, 'filiere_id');

@@ -9,16 +9,10 @@ use App\Models\PeriodeEvaluation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Avis>
- */
+/** @extends Factory<Avis> */
 class AvisFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
@@ -32,9 +26,6 @@ class AvisFactory extends Factory
         ];
     }
 
-    /**
-     * Avis masqué automatiquement après 3 signalements.
-     */
     public function signale(): static
     {
         return $this->state(fn (array $attributes) => [

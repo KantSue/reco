@@ -6,16 +6,10 @@ use App\Models\Recommandation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Recommandation>
- */
+/** @extends Factory<Recommandation> */
 class RecommandationFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [

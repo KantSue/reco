@@ -18,9 +18,6 @@ use Inertia\Response;
 
 class ModerationController extends Controller
 {
-    /**
-     * F9 et S4 : avis signalés à traiter et avis masqués.
-     */
     public function index(): Response
     {
         $aTraiter = Avis::query()
@@ -55,9 +52,6 @@ class ModerationController extends Controller
         ]);
     }
 
-    /**
-     * Valider (republier) ou masquer un avis.
-     */
     public function update(Request $request, Avis $avis): RedirectResponse
     {
         Gate::authorize('moderer', $avis);

@@ -7,9 +7,6 @@ import { formatDateCourte, ilYA } from '@/lib/format';
 import { cn } from '@/lib/utils';
 import type { Avis } from '@/types';
 
-/**
- * Carte d'un avis : jamais de nom d'auteur (NF1), seulement « Étudiant anonyme ».
- */
 export default function AvisCard({
     avis,
     afficherCours = false,

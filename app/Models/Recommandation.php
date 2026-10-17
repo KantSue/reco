@@ -12,8 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
- * Recommandation anonyme d'un enseignant par un étudiant.
- *
  * @property int $id
  * @property int $enseignant_id
  * @property int $auteur_id
@@ -32,11 +30,7 @@ class Recommandation extends Model
 
     public const UPDATED_AT = null;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -44,9 +38,7 @@ class Recommandation extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
+    /** @return BelongsTo<User, $this> */
     public function enseignant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'enseignant_id');

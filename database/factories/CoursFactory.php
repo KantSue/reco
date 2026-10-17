@@ -8,16 +8,10 @@ use App\Models\Filiere;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<Cours>
- */
+/** @extends Factory<Cours> */
 class CoursFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
@@ -35,9 +29,6 @@ class CoursFactory extends Factory
         ];
     }
 
-    /**
-     * Fiche non mise à jour depuis plus de 12 mois.
-     */
     public function perime(): static
     {
         return $this->state(fn (array $attributes) => ['date_maj' => now()->subMonths(13)]);

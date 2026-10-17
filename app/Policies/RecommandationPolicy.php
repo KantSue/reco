@@ -8,9 +8,6 @@ use Illuminate\Auth\Access\Response;
 
 class RecommandationPolicy
 {
-    /**
-     * F13 : un étudiant recommande un enseignant, une seule fois.
-     */
     public function create(User $user, User $enseignant): Response
     {
         if ($user->role !== Role::Etudiant || $enseignant->role !== Role::Enseignant) {

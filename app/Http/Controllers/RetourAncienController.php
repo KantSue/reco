@@ -13,9 +13,6 @@ use Inertia\Response;
 
 class RetourAncienController extends Controller
 {
-    /**
-     * F15 : témoignages des anciens, filtrables par filière.
-     */
     public function index(Request $request): Response
     {
         $filiere = $request->string('filiere')->toString();
@@ -45,9 +42,6 @@ class RetourAncienController extends Controller
         ]);
     }
 
-    /**
-     * Règle 9 : un ancien publie un retour d'expérience (jamais d'avis noté).
-     */
     public function store(Request $request): RedirectResponse
     {
         Gate::authorize('create', RetourAncien::class);

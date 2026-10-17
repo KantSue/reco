@@ -7,21 +7,12 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * @extends Factory<User>
- */
+/** @extends Factory<User> */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
     protected static ?string $password;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
@@ -66,9 +57,6 @@ class UserFactory extends Factory
         ]);
     }
 
-    /**
-     * Compte désactivé par l'administration.
-     */
     public function inactif(): static
     {
         return $this->state(fn (array $attributes) => ['actif' => false]);

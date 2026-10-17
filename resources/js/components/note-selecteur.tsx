@@ -11,7 +11,6 @@ const LIBELLES = [
     'Excellent',
 ];
 
-/** Choix d'une note de 1 à 5 (boutons radio accessibles, champ « note »). */
 export default function NoteSelecteur({
     valeurInitiale,
     invalide,

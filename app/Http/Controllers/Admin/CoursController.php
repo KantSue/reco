@@ -17,9 +17,6 @@ use Inertia\Response;
 
 class CoursController extends Controller
 {
-    /**
-     * F8 : gestion des cours et des filières.
-     */
     public function index(): Response
     {
         $cours = Cours::query()->with(['filiere', 'enseignant'])->avecStatistiques()->orderBy('code_ue')->get();

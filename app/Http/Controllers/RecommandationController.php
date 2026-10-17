@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Gate;
 
 class RecommandationController extends Controller
 {
-    /**
-     * F13 : recommander un enseignant avec un commentaire (auteur caché).
-     */
     public function store(Request $request, User $enseignant): RedirectResponse
     {
         Gate::authorize('create', [Recommandation::class, $enseignant]);

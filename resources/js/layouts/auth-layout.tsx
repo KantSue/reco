@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 
-/** Icône au trait (tracés Lucide, grille 24×24) placée dans l'illustration. */
 function Icone({
     x,
     y,
@@ -54,7 +53,6 @@ const TOQUE = [
 ];
 const PLUS = ['M12 5v14', 'M5 12h14'];
 
-/** [x, y] des étoiles reliées en constellations. */
 const CONSTELLATIONS: [number, number][][] = [
     [
         [250, 190],
@@ -73,7 +71,6 @@ const CONSTELLATIONS: [number, number][][] = [
     ],
 ];
 
-/** Illustration du panneau de connexion, en verre sombre aux couleurs de la palette. */
 function Illustration() {
     return (
         <aside

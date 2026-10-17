@@ -17,9 +17,6 @@ use Inertia\Response;
 
 class AccueilController extends Controller
 {
-    /**
-     * Page d'accueil : chaque rôle est dirigé vers son espace.
-     */
     public function __invoke(Request $request): Response|RedirectResponse
     {
         $user = $request->user();

@@ -17,8 +17,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
- * Fiche officielle d'un cours (UE).
- *
  * @property int $id
  * @property string $code_ue
  * @property string $intitule
@@ -49,21 +47,11 @@ class Cours extends Model
 
     public const UPDATED_AT = 'date_maj';
 
-    /**
-     * Règle 7 : la moyenne n'est affichée qu'à partir de ce nombre d'avis publiés.
-     */
     public const SEUIL_AFFICHAGE_MOYENNE = 5;
 
-    /**
-     * Règle 8 : une fiche plus ancienne que ce nombre de mois est signalée.
-     */
     public const MOIS_AVANT_PEREMPTION = 12;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     protected function casts(): array
     {
         return [
@@ -73,41 +61,31 @@ class Cours extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo<Filiere, $this>
-     */
+    /** @return BelongsTo<Filiere, $this> */
     public function filiere(): BelongsTo
     {
         return $this->belongsTo(Filiere::class, 'filiere_id');
     }
 
-    /**
-     * @return BelongsTo<User, $this>
-     */
+    /** @return BelongsTo<User, $this> */
     public function enseignant(): BelongsTo
     {
         return $this->belongsTo(User::class, 'enseignant_id');
     }
 
-    /**
-     * @return HasMany<Avis, $this>
-     */
+    /** @return HasMany<Avis, $this> */
     public function avis(): HasMany
     {
         return $this->hasMany(Avis::class, 'cours_id');
     }
 
-    /**
-     * @return HasMany<SuiteDonnee, $this>
-     */
+    /** @return HasMany<SuiteDonnee, $this> */
     public function suitesDonnees(): HasMany
     {
         return $this->hasMany(SuiteDonnee::class, 'cours_id');
     }
 
-    /**
-     * @return BelongsToMany<User, $this, InscriptionCours>
-     */
+    /** @return BelongsToMany<User, $this, InscriptionCours> */
     public function etudiants(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'inscription_cours', 'cours_id', 'etudiant_id')
@@ -115,11 +93,7 @@ class Cours extends Model
             ->withPivot('annee_universitaire');
     }
 
-    /**
-     * Ajoute le nombre d'avis publiés (nb_avis) et leur moyenne brute (moyenne_brute).
-     *
-     * @param  Builder<Cours>  $query
-     */
+    /** @param  Builder<Cours>  $query */
     public function scopeAvecStatistiques(Builder $query): void
     {
         $query
@@ -127,20 +101,12 @@ class Cours extends Model
             ->withAvg(['avis as moyenne_brute' => fn (Builder $avis) => $avis->where('statut', StatutAvis::Publie)], 'note');
     }
 
-    /**
-     * Fiches non mises à jour depuis plus de 12 mois.
-     *
-     * @param  Builder<Cours>  $query
-     */
+    /** @param  Builder<Cours>  $query */
     public function scopePerimes(Builder $query): void
     {
         $query->where('date_maj', '<', now()->subMonths(self::MOIS_AVANT_PEREMPTION));
     }
 
-    /**
-     * Moyenne arrondie, ou null tant que le seuil d'anonymat n'est pas atteint.
-     * Nécessite le scope avecStatistiques.
-     */
     public function moyenneAffichable(): ?float
     {
         if (($this->nb_avis ?? 0) < self::SEUIL_AFFICHAGE_MOYENNE || $this->moyenne_brute === null) {
@@ -155,11 +121,7 @@ class Cours extends Model
         return $this->date_maj->lt(now()->subMonths(self::MOIS_AVANT_PEREMPTION));
     }
 
-    /**
-     * Chapitres sous forme de liste : un par ligne, ou séparés par « ; » avec numérotation.
-     *
-     * @return list<string>
-     */
+    /** @return list<string> */
     public function listeChapitres(): array
     {
         $texte = (string) $this->chapitres;
@@ -172,9 +134,7 @@ class Cours extends Model
             ->all();
     }
 
-    /**
-     * @return list<string>
-     */
+    /** @return list<string> */
     public function listeOutils(): array
     {
         return collect(explode(',', (string) $this->outils))

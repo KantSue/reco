@@ -8,9 +8,6 @@ enum StatutAvis: string
     case Signale = 'signale';
     case Masque = 'masque';
 
-    /**
-     * Libellé affiché dans l'interface.
-     */
     public function label(): string
     {
         return match ($this) {

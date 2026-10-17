@@ -77,7 +77,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     );
 }
 
-/** En-tête de page d'administration. */
 export function EnTeteAdmin({
     titre,
     description,

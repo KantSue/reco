@@ -13,9 +13,6 @@ use Inertia\Response;
 
 class SuiteDonneeController extends Controller
 {
-    /**
-     * F12 : retours « suite donnée » publiés sur les fiches de cours.
-     */
     public function index(): Response
     {
         return Inertia::render('admin/suites', [

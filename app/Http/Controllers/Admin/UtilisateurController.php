@@ -18,9 +18,6 @@ use Inertia\Response;
 
 class UtilisateurController extends Controller
 {
-    /**
-     * F8 : gestion des comptes (création, rôle, activation, inscriptions aux cours).
-     */
     public function index(Request $request): Response
     {
         $filtres = $request->validate([
@@ -89,9 +86,6 @@ class UtilisateurController extends Controller
         return back();
     }
 
-    /**
-     * Règle 1 : cours suivis par l'étudiant pour l'année universitaire en cours.
-     */
     public function inscriptions(Request $request, User $utilisateur): RedirectResponse
     {
         abort_unless($utilisateur->role === Role::Etudiant, 404);

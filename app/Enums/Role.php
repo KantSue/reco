@@ -9,9 +9,6 @@ enum Role: string
     case Enseignant = 'enseignant';
     case Admin = 'admin';
 
-    /**
-     * Libellé affiché dans l'interface.
-     */
     public function label(): string
     {
         return match ($this) {

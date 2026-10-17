@@ -12,9 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class AvisController extends Controller
 {
-    /**
-     * F5 : dépôt d'un avis anonyme (règles 1 et 2, période d'évaluation ouverte).
-     */
     public function store(AvisRequest $request, Cours $cours): RedirectResponse
     {
         Gate::authorize('deposerAvis', $cours);
@@ -48,9 +45,6 @@ class AvisController extends Controller
         return to_route('cours.show', $cours);
     }
 
-    /**
-     * NF5 : l'auteur modifie son avis.
-     */
     public function update(AvisRequest $request, Avis $avis): RedirectResponse
     {
         Gate::authorize('update', $avis);
@@ -62,9 +56,6 @@ class AvisController extends Controller
         return to_route('cours.show', $avis->cours_id);
     }
 
-    /**
-     * L'auteur retire son avis.
-     */
     public function destroy(Avis $avis): RedirectResponse
     {
         Gate::authorize('delete', $avis);

@@ -5,7 +5,6 @@ import { Etoiles } from '@/components/note';
 import { formatDateCourte, formatNote, pluriel } from '@/lib/format';
 import type { Cours } from '@/types';
 
-/** Carte de cours (accueil, recherche). */
 export default function CoursCard({
     cours,
     avecNotes = true,

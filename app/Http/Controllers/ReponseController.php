@@ -9,9 +9,6 @@ use Illuminate\Support\Facades\Gate;
 
 class ReponseController extends Controller
 {
-    /**
-     * F11 : droit de réponse de l'enseignant, une fois par avis.
-     */
     public function store(Request $request, Avis $avis): RedirectResponse
     {
         Gate::authorize('repondre', $avis);

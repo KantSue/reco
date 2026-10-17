@@ -14,7 +14,6 @@
         'Bricolage Grotesque', 'Plus Jakarta Sans', ui-sans-serif, system-ui,
         sans-serif;
 
-    /* Palette pastel RECO (glassmorphisme) */
     --color-dragee: #fadcfe;
     --color-lagon: #c7f3f6;
     --color-vanille: #fedf99;
@@ -22,7 +21,6 @@
     --color-iris: #838bcc;
     --color-lilac: #b8aee3;
 
-    /* Teintes dérivées : textes, fonds sombres et surfaces en verre */
     --color-ink: #23244f;
     --color-plum: #45477f;
     --color-lavender: #c7f3f6;
@@ -99,7 +97,6 @@
 
     body {
         @apply bg-background font-sans text-foreground antialiased;
-        /* Fond pastel fixe derrière toutes les surfaces en verre */
         background-image:
             radial-gradient(at 6% 8%, #fadcfe 0, transparent 42%),
             radial-gradient(at 94% 14%, #c7f3f6 0, transparent 40%),
@@ -124,17 +121,14 @@
 }
 
 @layer components {
-    /* Champs de formulaire RECO */
     .champ {
         @apply w-full rounded-[10px] border-[1.5px] border-white/70 bg-white/60 px-3 py-3 text-[15px] text-ink backdrop-blur-md placeholder:text-dusk/70 focus:border-iris focus:bg-white/80 focus:ring-2 focus:ring-iris/30 focus:outline-none aria-invalid:border-alert;
     }
 
-    /* Surface en verre dépoli */
     .carte {
         @apply rounded-2xl border border-white/65 bg-white/50 shadow-[0_10px_32px_-14px_rgba(131,139,204,0.45),inset_0_1px_0_rgba(255,255,255,0.7)] backdrop-blur-xl backdrop-saturate-150;
     }
 
-    /* Bandeau en tête de page : dégradé indigo → violet éclairé par la palette */
     .bandeau {
         border-radius: 1.5rem;
         background-color: #3f4492;
@@ -148,7 +142,6 @@
             inset 0 1px 0 rgb(255 255 255 / 0.18);
     }
 
-    /* Teintes des cartes colorées (à combiner avec .carte) */
     .teinte-ciel {
         background-image: linear-gradient(135deg, rgb(199 243 246 / 0.9), rgb(164 198 233 / 0.85));
     }

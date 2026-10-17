@@ -12,9 +12,6 @@ class CompteController extends Controller
 {
     use PasswordValidationRules;
 
-    /**
-     * Informations du compte et changement de mot de passe.
-     */
     public function edit(Request $request): Response
     {
         $user = $request->user();

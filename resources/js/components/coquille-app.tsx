@@ -19,7 +19,6 @@ type Props = {
     sousTitre?: string;
     navigationLabel: string;
     liens: LienCoquille[];
-    /** Bas de la barre latérale : compte, déconnexion… */
     pied: ReactNode;
     children: ReactNode;
 };
@@ -85,10 +84,6 @@ function Navigation({
     );
 }
 
-/**
- * Cadre commun des espaces connectés : barre latérale en dégradé et
- * contenu dans une grande fenêtre en verre (tiroir sur mobile).
- */
 export default function CoquilleApp({
     sousTitre,
     navigationLabel,

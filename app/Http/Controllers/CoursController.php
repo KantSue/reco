@@ -18,10 +18,6 @@ use Inertia\Response;
 
 class CoursController extends Controller
 {
-    /**
-     * F4 et F16 : recherche par nom, code UE, enseignant, filière ou niveau ; tri par note.
-     * F17 : accessible sans compte (fiches officielles, sans les notes).
-     */
     public function index(Request $request): Response
     {
         $filtres = $request->validate([
@@ -70,9 +66,6 @@ class CoursController extends Controller
         ]);
     }
 
-    /**
-     * F2, F3, F6 : fiche complète, avis anonymes, réponses et suite donnée.
-     */
     public function show(Request $request, Cours $cours): Response
     {
         $user = $request->user();
@@ -105,19 +98,12 @@ class CoursController extends Controller
         ]);
     }
 
-    /**
-     * Les notes sont dérivées des avis : réservées aux membres qui lisent les avis.
-     */
     private function peutVoirLesNotes(Request $request): bool
     {
         return $request->user()?->hasRole(Role::Etudiant, Role::Enseignant, Role::Admin) ?? false;
     }
 
-    /**
-     * Diagramme d'activité « déposer un avis » : période ouverte, inscription, avis existant.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     private function etatDepot(User $etudiant, Cours $cours): array
     {
         $periode = PeriodeEvaluation::enCours();

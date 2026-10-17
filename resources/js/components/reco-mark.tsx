@@ -1,9 +1,5 @@
 import type { SVGProps } from 'react';
 
-/**
- * Pictogramme du logo RECO (lecteur, livre ouvert et bulle d'avis).
- * La variante « claire » est destinée aux fonds sombres.
- */
 export default function RecoMark({
     variante = 'claire',
     ...props

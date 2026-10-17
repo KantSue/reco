@@ -11,9 +11,7 @@ class MesCoursControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @return array<string, string>
-     */
+    /** @return array<string, string> */
     private function fiche(): array
     {
         return [

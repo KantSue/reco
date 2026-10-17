@@ -6,15 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * Données de démonstration reprises de 2_donnees_test.sql.
- * Mot de passe de tous les comptes : Test1234.
- */
 class DonneesDemonstrationSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $this->utilisateurs();

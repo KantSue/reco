@@ -5,16 +5,10 @@ namespace Database\Factories;
 use App\Models\PeriodeEvaluation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends Factory<PeriodeEvaluation>
- */
+/** @extends Factory<PeriodeEvaluation> */
 class PeriodeEvaluationFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function definition(): array
     {
         return [
@@ -24,9 +18,6 @@ class PeriodeEvaluationFactory extends Factory
         ];
     }
 
-    /**
-     * Période déjà terminée.
-     */
     public function fermee(): static
     {
         return $this->state(fn (array $attributes) => [
