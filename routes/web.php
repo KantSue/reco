@@ -6,7 +6,6 @@ use App\Http\Controllers\AvisController;
 use App\Http\Controllers\CompteController;
 use App\Http\Controllers\CoursController;
 use App\Http\Controllers\EnseignantController;
-use App\Http\Controllers\LivreController;
 use App\Http\Controllers\MesCoursController;
 use App\Http\Controllers\RecommandationController;
 use App\Http\Controllers\ReponseController;
@@ -83,10 +82,3 @@ Route::middleware('auth')->group(function () {
         Route::get('statistiques', [Admin\StatistiqueController::class, 'index'])->name('statistiques.index');
     });
 });
-
-Route::get('/bonjour/{nom}', function ($nom) {
-    return view($view = 'bonjour', ['nom' => $nom]);
-});
-Route::get('/livres', [LivreController::class, 'index'])->name('livres.index');
-Route::get('/livres/{id}', [LivreController::class, 'show'])->name('livres.show');
-Route::get('/about', [LivreController::class, 'about'])->name('about');
